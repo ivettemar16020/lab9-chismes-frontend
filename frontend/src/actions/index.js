@@ -28,3 +28,20 @@ export const deleteChisme = id => ({
       id,
     }
 });
+
+export const updateChisme = (
+    old_id,
+    id,
+    title,
+    content,
+    date,
+) => ({
+    type: types.CHISME_UPDATED,
+    payload: {
+        old_id,
+        id,
+        title,
+        content,
+        date,
+    }
+})
