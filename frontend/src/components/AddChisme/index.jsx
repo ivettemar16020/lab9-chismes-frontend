@@ -27,7 +27,7 @@ const AddChisme = props => (
         onChange={props.handleChange}
         value={props.value}
       />
-      <ButtonStyle type="submit">Add Chisme</ButtonStyle>
+      <ButtonStyle type="submit">Agregar Chisme</ButtonStyle>
     </form>
   </div>
 );

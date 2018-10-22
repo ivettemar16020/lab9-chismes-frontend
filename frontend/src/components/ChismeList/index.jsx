@@ -32,6 +32,7 @@ class ChismeList extends Component {
     //  when passed down as props to child Chisme components
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.postMethod = this.postMethod.bind(this);
   }
 
   async componentDidMount() {
@@ -40,6 +41,22 @@ class ChismeList extends Component {
       .then(chismes => this.setState({ chismes , loading: false}))
       .catch(error => this.setState({ error, isLoading: false }));
 
+  }
+
+  async postMethod(addedChisme){
+    const headers = new Headers();
+    headers.append('Content-Type', 'applicaction/json');
+
+    const options = {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(addedChisme),
+    }
+
+    const request = new Request('http://127.0.0.1:8000/api/', options);
+    const response = await fetch(request);
+    const status = await response.status; 
+    console.log(status);
   }
 
   handleChange(e) {
@@ -55,13 +72,23 @@ class ChismeList extends Component {
     }
     const addedChisme = {
       id: uuidv4(),
-      name: this.state.newChisme,
+      title: this.state.newChisme,
       applied: false
     };
     this.setState({
       chismes: [...this.state.chismes, addedChisme],
       newChisme: ''
     });
+
+    const newData = [
+      uuidv4(),
+      this.state.newChisme,
+      'si',
+      '05/02',
+    ]
+ 
+    this.postMethod(newData);   
+
   }
 
   toggleChisme(id) {
@@ -97,6 +124,7 @@ class ChismeList extends Component {
         <AddChisme
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          postMethod={this.postMethod}
           value={this.state.newChisme}
         />
       </ContainerStyle>
