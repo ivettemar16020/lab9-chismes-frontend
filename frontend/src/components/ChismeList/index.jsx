@@ -61,7 +61,7 @@ class ChismeList extends Component {
 
   handleChange(e) {
     this.setState({
-      newChisme: e.target.value
+      newChisme: e.target.valuetitle
     });
   }
 
@@ -80,14 +80,7 @@ class ChismeList extends Component {
       newChisme: ''
     });
 
-    const newData = [
-      uuidv4(),
-      this.state.newChisme,
-      'si',
-      '05/02',
-    ]
- 
-    this.postMethod(newData);   
+    this.postMethod(addedChisme);   
 
   }
 

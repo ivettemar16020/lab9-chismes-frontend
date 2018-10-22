@@ -24,6 +24,14 @@ const AddChisme = props => (
       <InputStyle
         type="text"
         name="addchisme"
+        placeholder="titulo del chisme"
+        onChange={props.handleChange}
+        value={props.value}
+      />
+       <InputStyle
+        type="text"
+        name="contentchisme"
+        placeholder="contenido"
         onChange={props.handleChange}
         value={props.value}
       />

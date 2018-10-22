@@ -12,6 +12,11 @@ const ListStyle = styled.li`
 
 const NameStyle = styled.span`
   margin-left: 20px;
+  font-weight: bold;
+`;
+
+const ContentStyle = styled.span`
+  font-weight: normal;
 `;
 
 const XStyle = styled.div`
@@ -22,11 +27,23 @@ const XStyle = styled.div`
   }
 `;
 
+
+const More = styled.div`
+  float: right;
+  color: blue;
+  :hover {
+    color: ble;
+    cursor: pointer;
+  }
+`;
+
 // Chisme is a stateless functional component and is therefore pure
 const Chisme = props => (
   <ListStyle applied={props.applied}>
     <NameStyle> {props.title} </NameStyle>
+    <ContentStyle> {props.content} </ContentStyle>
     <XStyle onClick={props.removeChisme}>✘</XStyle>
+    <More> ver mas </More>
   </ListStyle>
 );
 
